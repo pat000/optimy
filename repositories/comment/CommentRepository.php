@@ -31,11 +31,18 @@ class CommentRepository implements CommentRepositoryInterface
 
     public function addComment(string $body, int $newsId): int
     {
-        $db = DB::getInstance();
-        $sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) 
-                VALUES('" . $body . "','" . date('Y-m-d') . "','" . $newsId . "')";
-        $db->exec($sql);
-        return $db->lastInsertId($sql);
+        $sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) VALUES(:body,:created_at,:news_id)";
+        $stmt = $this->db->prepare($sql);
+
+        $createdAt = date('Y-m-d');
+
+        // bind parameters to avoid SQL injection
+        $stmt->bindParam(':body', $body);
+        $stmt->bindParam(':created_at', $createdAt);
+        $stmt->bindParam(':news_id', $newsId);
+
+        $stmt->execute();
+        return $this->db->lastInsertId();
     }
 
     public function deleteComment(int $id): bool

@@ -18,11 +18,15 @@ class NewsRepository implements NewsRepositoryInterface
     {
         $sql = "INSERT INTO `news` (`title`, `body`, `created_at`) VALUES(:title, :body, :created_at)";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            'title' => $title,
-            'body' => $body,
-            'created_at' => date('Y-m-d')
-        ]);
+
+        $createdAt = date('Y-m-d');
+
+        // bind parameters to avoid SQL injection
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':body', $body);
+        $stmt->bindParam(':created_at', $createdAt);
+
+        $stmt->execute();
 
         return $this->db->lastInsertId();
     }

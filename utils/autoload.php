@@ -9,7 +9,6 @@ require_once(ROOT . '/utils/CommentManager.php');
 require_once(ROOT . '/repositories/comment/CommentRepositoryInterface.php');
 require_once(ROOT . '/repositories/comment/CommentRepository.php');
 
-
 // instantiate the repository
 $newsRepository = new NewsRepository();
 $commentRepository = new CommentRepository();
