@@ -22,3 +22,4 @@ This simple application works, but with very old-style monolithic codebase, so d
   - added PHP-cs for code standards
   - added faker for text generation
   - added phpdoc
+  - added dotenv

@@ -1,5 +1,12 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(ROOT);
+$dotenv->load();
+
 require_once(ROOT . '/utils/DB.php');
 require_once(ROOT . '/utils/NewsManager.php');
 require_once(ROOT . '/repositories/news/NewsRepositoryInterface.php');

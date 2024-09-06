@@ -17,6 +17,7 @@
         "phpdocumentor/phpdocumentor": "^2.8"
     },
     "require": {
-        "fzaninotto/faker": "^1.5"
+        "fzaninotto/faker": "^1.5",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

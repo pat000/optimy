@@ -3,7 +3,6 @@
 define('ROOT', __DIR__);
 
 require_once(ROOT . '/utils/autoload.php');
-require_once 'vendor/autoload.php';
 
 // we set this as variable so we can call it again
 $newsWithComments = $newsManager->getNewsWithComments(); // created news with joined comments

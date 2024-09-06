@@ -1,11 +1,34 @@
 <?php
 
+/**
+ * News
+ */
 class News
 {
+    /**
+     * id
+     *
+     * @var mixed
+     */
     protected $id;
+    /**
+     * title
+     *
+     * @var mixed
+     */
     protected $title;
+    /**
+     * body
+     *
+     * @var mixed
+     */
     protected $body;
     protected \DateTime $createdAt;
+    /**
+     * comments
+     *
+     * @var mixed
+     */
     protected $comments;
 
 
