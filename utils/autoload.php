@@ -11,10 +11,8 @@ require_once(ROOT . '/repositories/comment/CommentRepository.php');
 
 // instantiate the repository
 $newsRepository = new NewsRepository();
-
 $commentRepository = new CommentRepository();
 
 // use the repository to get the data instance
 $newsManager = NewsManager::getInstance($newsRepository);
-
 $commentManager = CommentManager::getInstance($commentRepository);

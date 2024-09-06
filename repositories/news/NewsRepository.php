@@ -53,17 +53,59 @@ class NewsRepository implements NewsRepositoryInterface
                 n.id
         ";
 
-        return $this->db->select($sql);
+        $rows = $this->db->select($sql);
 
         if ($rows === null) {
             throw new RuntimeException('Database query returned null. Check your database connection and query.');
         }
+
+        $newsWithComments = [];
+
+        foreach ($rows as $row) {
+            // make it DRY - no more other variables and set readable variable
+            $news = new News(
+                $row['news_id'],
+                $row['news_title'],
+                $row['news_body'],
+                new \DateTime($row['news_created_at']),
+            );
+
+            $comments = [];
+            if ($row['comments']) {
+                $commentsData = explode('|', $row['comments']);
+                foreach ($commentsData as $commentData) {
+                    list($commentId, $commentBody) = explode(':', $commentData);
+                    $comments[] = [
+                        'id' => $commentId,
+                        'body' => $commentBody
+                    ];
+                }
+            }
+            $news->setComments($comments);
+
+            $newsWithComments[$row['news_id']] = $news;
+
+        }
+
+        return $newsWithComments;
     }
 
     public function listNews(): array
     {
         $sql = "SELECT * FROM `news`";
-        return $this->db->select($sql);
+        $rows = $this->db->select($sql);
+
+        $news = [];
+        foreach ($rows as $row) {
+            $news[] = new News(
+                $row['id'],
+                $row['title'],
+                $row['body'],
+                new \DateTime($row['created_at'])
+            );
+        }
+
+        return $news;
     }
 
     public function deleteNews(int $id): bool
