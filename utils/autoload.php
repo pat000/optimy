@@ -1,5 +1,6 @@
 <?php
 
+require_once(ROOT . '/utils/DB.php');
 require_once(ROOT . '/utils/NewsManager.php');
 require_once(ROOT . '/repositories/news/NewsRepositoryInterface.php');
 require_once(ROOT . '/repositories/news/NewsRepository.php');

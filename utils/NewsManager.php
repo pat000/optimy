@@ -11,10 +11,6 @@ class NewsManager
      */
     private function __construct(NewsRepositoryInterface $newsRepository)
     {
-        require_once(ROOT . '/utils/DB.php');
-        require_once(ROOT . '/utils/CommentManager.php');
-        require_once(ROOT . '/class/News.php');
-
         $this->newsRepository = $newsRepository;
     }
 

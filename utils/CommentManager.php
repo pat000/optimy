@@ -7,8 +7,6 @@ class CommentManager
 
     private function __construct(CommentRepositoryInterface $commentRepository)
     {
-        require_once(ROOT . '/utils/DB.php');
-        require_once(ROOT . '/class/Comment.php');
         $this->commentRepository = $commentRepository;
     }
 
@@ -20,32 +18,28 @@ class CommentManager
         return self::$instance;
     }
 
+    /**
+     * list add comments
+     */
+
     public function listComments()
     {
-        $db = DB::getInstance();
-        $rows = $db->select('SELECT * FROM `comment`');
-
-        $comments = [];
-        foreach ($rows as $row) {
-            $n = new Comment();
-            $comments[] = $n->setId($row['id'])
-              ->setBody($row['body'])
-              ->setCreatedAt($row['created_at'])
-              ->setNewsId($row['news_id']);
-        }
-
-        return $comments;
+        return $this->commentRepository->listComments();
     }
 
+    /**
+     * add comments by news
+     */
     public function addCommentForNews($body, $newsId)
     {
         return $this->commentRepository->addComment($body, $newsId);
     }
 
+    /**
+     * delete specific comment
+     */
     public function deleteComment($id)
     {
-        $db = DB::getInstance();
-        $sql = "DELETE FROM `comment` WHERE `id`=" . $id;
-        return $db->exec($sql);
+        return $this->commentRepository->deleteComment($id);
     }
 }

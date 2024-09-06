@@ -14,8 +14,13 @@ class News
      * removed setter for the use of construct
      */
 
-    public function __construct(int $id, string $title = "", string $body = "", \DateTime $createdAt = null, $comments = []) // we can add default value for the columns
-    {
+    public function __construct(
+        int $id,
+        string $title = "",
+        string $body = "",
+        \DateTime $createdAt = null,
+        $comments = []
+    ) { // we can add default value for the columns
         $this->id = $id;
         $this->title = $title;
         $this->body = $body;

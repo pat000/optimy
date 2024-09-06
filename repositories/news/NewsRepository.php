@@ -1,6 +1,6 @@
 <?php
 
-require_once(ROOT . '/utils/DB.php');
+require_once(ROOT . '/class/News.php');
 
 class NewsRepository implements NewsRepositoryInterface
 {
@@ -84,7 +84,6 @@ class NewsRepository implements NewsRepositoryInterface
             $news->setComments($comments);
 
             $newsWithComments[$row['news_id']] = $news;
-
         }
 
         return $newsWithComments;
@@ -127,5 +126,4 @@ class NewsRepository implements NewsRepositoryInterface
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':news_id' => $newsId]);
     }
-
 }
