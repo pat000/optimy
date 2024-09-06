@@ -19,3 +19,6 @@ This simple application works, but with very old-style monolithic codebase, so d
   - added repository pattern
   - added type hint in abstract class
   - added left join query for news and comments
+  - added PHP-cs for code standards
+  - added faker for text generation
+  - added phpdoc

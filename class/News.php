@@ -8,12 +8,12 @@ class News
     protected \DateTime $createdAt;
     protected $comments;
 
-    /**
-     * Constructor for initializing properties
-     * add constructor to avoid calling the setters
-     * removed setter for the use of construct
-     */
 
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
         int $id,
         string $title = "",
@@ -28,6 +28,11 @@ class News
         $this->comments = $comments ?? [];
     }
 
+    /**
+     * getId
+     *
+     * @return int
+     */
     public function getId(): int // add type hinting if int or string
     {
         return $this->id;

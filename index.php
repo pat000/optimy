@@ -5,8 +5,6 @@ define('ROOT', __DIR__);
 require_once(ROOT . '/utils/autoload.php');
 require_once 'vendor/autoload.php';
 
-$faker = Faker\Factory::create();
-
 // we set this as variable so we can call it again
 $newsWithComments = $newsManager->getNewsWithComments(); // created news with joined comments
 $plainNews = $newsManager->listNews(); // created also for news only
@@ -20,6 +18,7 @@ foreach ($newsWithComments as $news) {
     }
 }
 
+$faker = Faker\Factory::create();
 
 echo "\n\n\n-----------------------Test add and delete---------\n\n";
 // test for adding news

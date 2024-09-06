@@ -1,6 +1,6 @@
 <?php
 
-require_once(ROOT . '/class/News.php');
+require_once ROOT . '/class/News.php';
 
 class NewsRepository implements NewsRepositoryInterface
 {

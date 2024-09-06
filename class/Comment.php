@@ -7,6 +7,12 @@ class Comment
     protected $createdAt;
     protected $newsId;
 
+    /**
+     * setId
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -14,6 +20,11 @@ class Comment
         return $this;
     }
 
+    /**
+     * getId
+     *
+     * @return void
+     */
     public function getId()
     {
         return $this->id;
