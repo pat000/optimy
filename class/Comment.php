@@ -8,16 +8,20 @@ class Comment
     protected $newsId;
 
     /**
-     * setId
+     * __construct
      *
-     * @param  mixed $id
      * @return void
      */
-    public function setId($id)
-    {
+    public function __construct(
+        int $id,
+        string $body = "",
+        \DateTime $createdAt = null,
+        int $newsId = 0,
+    ) { // we can add default value for the columns
         $this->id = $id;
-
-        return $this;
+        $this->body = $body;
+        $this->createdAt = $createdAt ?? new \DateTime();
+        $this->newsId = $newsId;
     }
 
     /**
@@ -25,43 +29,40 @@ class Comment
      *
      * @return void
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
-    public function setBody($body)
-    {
-        $this->body = $body;
 
-        return $this;
-    }
-
-    public function getBody()
+    /**
+     * getBody
+     *
+     * @return string
+     */
+    public function getBody(): string
     {
         return $this->body;
     }
 
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
 
-        return $this;
-    }
-
-    public function getCreatedAt()
+    /**
+     * getCreatedAt
+     *
+     * @return DateTime
+     */
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
-    public function getNewsId()
+    /**
+     * getNewsId
+     *
+     * @return int
+     */
+    public function getNewsId(): int
     {
         return $this->newsId;
     }
 
-    public function setNewsId($newsId)
-    {
-        $this->newsId = $newsId;
-
-        return $this;
-    }
 }

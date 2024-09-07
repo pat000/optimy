@@ -61,27 +61,53 @@ class News
         return $this->id;
     }
 
+    /**
+     * getTitle
+     *
+     * @return string
+     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
+    /**
+     * getBody
+     *
+     * @return string
+     */
     public function getBody(): string
     {
         return $this->body;
     }
 
+    /**
+     * getComments
+     *
+     * @return array
+     */
     public function getComments(): array
     {
         return $this->comments;
     }
 
+    /**
+     * setComments
+     *
+     * @param  mixed $comments
+     * @return self
+     */
     public function setComments(array $comments): self
     {
         $this->comments = $comments;
         return $this;
     }
 
+    /**
+     * getCreatedAt
+     *
+     * @return DateTime
+     */
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
